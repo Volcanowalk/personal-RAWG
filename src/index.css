@@ -4,8 +4,17 @@
 
 body {
   background-image: linear-gradient(to right, black, #343434);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 div::-webkit-scrollbar {
   display: none;
+}
+
+.sidebar {
+  min-width: 210px;
+}
+
+.gamecard {
+  box-shadow: 0px 0px 8px white;
 }

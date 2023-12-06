@@ -8,7 +8,7 @@ export default function Header() {
       </div>
       <form
         className="bg-slate-50 rounded-md px-3 py-1 basis-1/2 
-      flex"
+      md:flex hidden"
       >
         <input
           type="search"
@@ -20,6 +20,9 @@ export default function Header() {
           <FaSearch />
         </button>
       </form>
+      <button className="text-2xl text-slate-50 md:hidden">
+        <FaSearch />
+      </button>
       <button
         className="text-slate-50 text-2xl hover:bg-gray-400 
       px-4 py-4 rounded-lg shadow-lg shadow-slate-50 border border-slate-50 
