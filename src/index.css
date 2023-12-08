@@ -16,5 +16,24 @@ div::-webkit-scrollbar {
 }
 
 .gamecard {
+  box-shadow: 0px 0px 8px grey;
+  background-color: #343434;
+}
+
+.gamecard:hover {
   box-shadow: 0px 0px 8px white;
+  cursor: pointer;
+  animation-name: scale-up;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
 }

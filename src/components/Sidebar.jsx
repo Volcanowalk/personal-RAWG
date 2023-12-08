@@ -25,9 +25,9 @@ export default function Sidebar() {
 
   return (
     <div
-      className="text-slate-50 sm:col-span-1 
-  hidden sm:flex sm:flex-col row-span-6 sm:items-center py-3 px-6 
-  overflow-y-scroll sidebar"
+      className="text-slate-50 md:col-span-1 
+  hidden md:block row-span-6 md:items-center py-3 px-6 
+  overflow-y-scroll sidebar sticky top-1"
     >
       <div className={sectionStyle}>
         <h3 className={h3Style}>New Releases</h3>
