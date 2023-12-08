@@ -13,7 +13,6 @@ export default function Display({ title }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
         data.results.forEach((game) => {
           const platforms = [];
           const genres = [];
@@ -31,8 +30,8 @@ export default function Display({ title }) {
             esrb_rating = game.esrb_rating.name;
           }
 
-          setGames([
-            ...games,
+          setGames((prevGames) => [
+            ...prevGames,
             {
               image: game.background_image,
               name: game.name,
@@ -46,7 +45,11 @@ export default function Display({ title }) {
         });
       })
       .catch((error) => console.error(error))
-      .finally(setIsLoading(false));
+      .finally(() => setIsLoading(false));
+
+    return () => {
+      setGames([]);
+    };
   }, []);
 
   if (isLoading) {
@@ -55,8 +58,6 @@ export default function Display({ title }) {
         Loading...
       </h1>
     );
-  } else {
-    console.log(games);
   }
 
   return (
@@ -64,13 +65,15 @@ export default function Display({ title }) {
       <h1 className="text-slate-50 text-6xl mx-7 my-3 text-center">{title}</h1>
       <div className="mx-7 my-7 flex gap-10 flex-wrap justify-center">
         {games.map((game) => {
-          <GameCard
-            key={game.name}
-            title={game.name}
-            platforms={game.platforms}
-            rating={game.rating}
-            img={game.image}
-          />;
+          return (
+            <GameCard
+              key={game.name}
+              title={game.name}
+              platforms={game.platforms}
+              rating={game.rating}
+              img={game.image}
+            />
+          );
         })}
       </div>
     </>

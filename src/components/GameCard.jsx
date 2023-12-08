@@ -1,7 +1,7 @@
 export default function GameCard({ img, title, platforms, rating }) {
   return (
     <div className="w-[300px] h-[300px] rounded-lg gamecard">
-      <img src={img} alt={title} className="w-[300px] h-[200px]" />
+      <img src={img} alt={title} className="w-[300px] h-[200px] rounded-lg" />
       <div className="mx-3 my-3">
         <h3 className="text-slate-50 text-xl font-semibold">{title}</h3>
         <div className="text-slate-50">
