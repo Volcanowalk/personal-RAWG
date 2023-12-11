@@ -6,9 +6,16 @@ A front-end project made during 'The Odin Project'.
 
 # Tech Stack
 
-RAWG API
-React
-JavaScript
-CSS
-HTML
-Tailwind CSS
+- RAWG API
+- React
+- JavaScript
+- CSS
+- HTML
+- Tailwind CSS
+
+# Tools
+
+- Prettier
+- ESLint
+- NPM
+- Vite
