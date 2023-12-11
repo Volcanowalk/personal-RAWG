@@ -1,5 +1,5 @@
-export function getAPIURL(title) {
-  let API_KEY = "";
+export function getAPIURL(title, keyword) {
+  let API_KEY = "0468e185f85e4442ad140aab01750fe6";
 
   //0468e185f85e4442ad140aab01750fe6
   let api_url = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=30`;
@@ -35,6 +35,8 @@ export function getAPIURL(title) {
     api_url += "&genres=racing&ordering=-added";
   } else if (title === "Sports") {
     api_url += "&genres=sports&ordering=-added";
+  } else if (title === "Search Results") {
+    api_url += `&search=${keyword}`;
   }
 
   return api_url;

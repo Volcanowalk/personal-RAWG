@@ -21,8 +21,10 @@ export default function GameDetail() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //0468e185f85e4442ad140aab01750fe6
-    fetch(`https://api.rawg.io/api/games/${id}?key=`, { mode: "cors" })
+    fetch(
+      `https://api.rawg.io/api/games/${id}?key=0468e185f85e4442ad140aab01750fe6`,
+      { mode: "cors" }
+    )
       .then((response) => response.json())
       .then((data) => {
         GAME_DATA.description = data.description_raw;
@@ -106,11 +108,11 @@ export default function GameDetail() {
       <h1 className="text-slate-50 text-4xl sm:text-6xl text-center">
         {GAME_DATA.name}
       </h1>
-      <main className="w-full mx-7 my-7 flex flex-col md:flex-row justify-center items-center">
+      <main className="w-full my-7 flex flex-col md:flex-row justify-center items-center">
         <img
           src={GAME_DATA.img}
           alt={`Image for ${GAME_DATA.name}`}
-          className="border border-white w-full h-auto md:w-2/3 
+          className="border border-white h-auto w-3/4 md:w-2/3 
           lg:w-1/2 object-contain"
         />
         <div
@@ -131,7 +133,9 @@ export default function GameDetail() {
           Publishers: {GAME_DATA.publishers}
         </div>
       </main>
-      <p className="text-slate-50 text-3xl sm:text-4xl py-3">Description</p>
+      <p className="text-slate-50 text-3xl sm:text-4xl px-2 py-3">
+        Description
+      </p>
       <div className="text-slate-50 px-10 py-3">{GAME_DATA.description}</div>
     </>
   );

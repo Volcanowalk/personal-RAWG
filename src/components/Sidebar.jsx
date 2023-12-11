@@ -14,21 +14,38 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { FaGun } from "react-icons/fa6";
 import { GiSteeringWheel, GiSwordman, GiCrossedSwords } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 
-export default function Sidebar() {
+export default function Sidebar({ toggleMenu, setToggleMenu }) {
   const h3Style = "font-bold text-2xl";
   const h4Style = "text-xl";
   const sectionStyle = "flex flex-col items-start w-full my-2";
   const linkStyle =
     "my-2 flex items-center gap-2 hover:bg-zinc-800 px-1 py-1" +
     " rounded-lg hover:cursor-pointer w-full";
+  let sidebarStyle =
+    "text-slate-50 md:col-span-1 md:block row-span-6 h-full" +
+    " md:items-center md:bg-transparent py-3 px-6 md:static md:max-w-[250px]" +
+    " overflow-y-scroll sidebar";
+
+  if (toggleMenu) {
+    sidebarStyle += " bg-black top-0 left-0 fixed rounded-r-xl slideIn";
+  } else {
+    sidebarStyle += " hidden";
+  }
+
+  function handleClose() {
+    setToggleMenu((prev) => !prev);
+  }
 
   return (
-    <div
-      className="text-slate-50 md:col-span-1 
-  hidden md:block row-span-6 md:items-center py-3 px-6 
-  overflow-y-scroll sidebar sticky top-1"
-    >
+    <aside className={sidebarStyle}>
+      <button
+        className="text-slate-50 md:hidden text-3xl"
+        onClick={handleClose}
+      >
+        <IoMdClose />
+      </button>
       <div className={sectionStyle}>
         <h3 className={h3Style}>New Releases</h3>
         <Link to="last30days" className={linkStyle}>
@@ -105,6 +122,6 @@ export default function Sidebar() {
           <h4 className={h4Style}>Sports</h4>
         </Link>
       </div>
-    </div>
+    </aside>
   );
 }

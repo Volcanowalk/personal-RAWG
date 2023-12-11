@@ -5,12 +5,15 @@ import Display from "./components/Display.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GameDetail from "./components/GameDetail.jsx";
+import Error from "./components/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
+      { index: true, element: <Display title="Last 30 Days" /> },
       { path: "thisweek", element: <Display title="This Week" /> },
       { path: "nextweek", element: <Display title="Next Week" /> },
       { path: "last30days", element: <Display title="Last 30 Days" /> },
@@ -27,6 +30,7 @@ const router = createBrowserRouter([
       { path: "shooter", element: <Display title="Shooter" /> },
       { path: "racing", element: <Display title="Racing" /> },
       { path: "sports", element: <Display title="Sports" /> },
+      { path: "search", element: <Display title="Search Results" /> },
       { path: "details/:id", element: <GameDetail /> },
     ],
   },

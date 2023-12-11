@@ -8,11 +8,13 @@ import {
 } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAppleAppstore } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 export default function GameCard({ img, title, platforms, id }) {
   const platformList = [];
   const platformTypes = [
+    "Web",
+    "PC",
     "PlayStation",
     "Xbox",
     "Nintendo",
@@ -21,6 +23,7 @@ export default function GameCard({ img, title, platforms, id }) {
     "Android",
     "iOS",
   ];
+  const [cart, setCart] = useOutletContext();
 
   platforms.forEach((platform) => {
     platformTypes.forEach((platformType) => {
@@ -37,6 +40,24 @@ export default function GameCard({ img, title, platforms, id }) {
   const handleCardClick = () => {
     navigate(`/details/${id}`);
   };
+
+  function handleAdd() {
+    if (!alreadyAdded()) {
+      setCart((prevCart) => {
+        return [...prevCart, { id: id, image: img, name: title }];
+      });
+    }
+  }
+
+  function alreadyAdded() {
+    let isAdded = false;
+    cart.forEach((item) => {
+      if (item.name === title) {
+        isAdded = true;
+      }
+    });
+    return isAdded;
+  }
 
   return (
     <div className="w-[300px] h-[350px] rounded-lg gamecard">
@@ -55,7 +76,7 @@ export default function GameCard({ img, title, platforms, id }) {
         </h3>
         <div className="text-slate-50 flex flex-wrap gap-3 my-1 items-center">
           {platformList.map((platform) => {
-            if (platform.includes("PC")) {
+            if (platform.includes("PC") || platform.includes("Web")) {
               return <FaWindows key={platform} />;
             } else if (platform.includes("PlayStation")) {
               return <FaPlaystation key={platform} />;
@@ -75,6 +96,7 @@ export default function GameCard({ img, title, platforms, id }) {
           })}
         </div>
         <button
+          onClick={handleAdd}
           className="text-zinc-500 bg-zinc-800 hover:bg-zinc-700 
         px-2 rounded-lg"
         >
