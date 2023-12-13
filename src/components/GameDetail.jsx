@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import Loading from "./Loading.jsx";
 
 let GAME_DATA = {
   released: null,
@@ -87,12 +88,14 @@ export default function GameDetail() {
     navigate(-1);
   }
 
+  function onBackspacePressed(e) {
+    if (e.key === "Backspace") {
+      handleBack();
+    }
+  }
+
   if (isLoading) {
-    return (
-      <h1 className="text-slate-50 text-6xl mx-7 my-3 text-center">
-        Loading...
-      </h1>
-    );
+    return <Loading />;
   }
 
   return (
@@ -101,6 +104,8 @@ export default function GameDetail() {
         className="text-slate-50 flex items-center text-xl px-2 py-2 rounded-lg 
       hover:bg-slate-700"
         onClick={handleBack}
+        tabIndex="0"
+        onKeyUp={(e) => onBackspacePressed(e)}
       >
         <IoMdArrowRoundBack />
         Back

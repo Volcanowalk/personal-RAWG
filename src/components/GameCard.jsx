@@ -10,7 +10,7 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { IoLogoAppleAppstore } from "react-icons/io5";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-export default function GameCard({ img, title, platforms, id }) {
+export default function GameCard({ img, title, platforms, id, tabIndex }) {
   const platformList = [];
   const platformTypes = [
     "Web",
@@ -59,8 +59,18 @@ export default function GameCard({ img, title, platforms, id }) {
     return isAdded;
   }
 
+  function onEnterPressed(e) {
+    if (e.key === "Enter") {
+      handleCardClick();
+    }
+  }
+
   return (
-    <div className="w-[300px] h-[350px] rounded-lg gamecard">
+    <div
+      className="w-[300px] h-[350px] rounded-lg gamecard"
+      tabIndex={tabIndex + 1}
+      onKeyUp={(e) => onEnterPressed(e)}
+    >
       <img
         src={img}
         alt={title}

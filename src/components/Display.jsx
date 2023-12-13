@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import { getAPIURL } from "../API.js";
 import { useSearchParams } from "react-router-dom";
+import Loading from "./Loading.jsx";
 
 let games = [];
 
@@ -48,11 +49,7 @@ export default function Display({ title }) {
   }, [title, searchParams.get("q")]);
 
   if (isLoading) {
-    return (
-      <main className="flex justify-center items-center h-full">
-        <div className="loader"></div>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (noResult) {
@@ -69,7 +66,7 @@ export default function Display({ title }) {
         {title}
       </h1>
       <div className="mx-7 my-7 flex gap-10 flex-wrap justify-center">
-        {games.map((game) => {
+        {games.map((game, index) => {
           return (
             <GameCard
               key={game.id}
@@ -78,6 +75,7 @@ export default function Display({ title }) {
               platforms={game.platforms}
               rating={game.rating}
               img={game.image}
+              tabIndex={index}
             />
           );
         })}

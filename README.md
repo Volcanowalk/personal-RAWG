@@ -1,6 +1,6 @@
 # Game search website with RAWG API
 
-This is a game search / purchase website made with RAWG API and Tailwind CSS.
+This is a game search / wishlist website made with RAWG API and Tailwind CSS.
 
 A front-end project made during 'The Odin Project'.
 
