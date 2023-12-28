@@ -26,7 +26,7 @@ export default function Sidebar({ toggleMenu, setToggleMenu }) {
   let sidebarStyle =
     "text-slate-50 md:col-span-1 md:block row-span-6 h-full" +
     " md:items-center md:bg-transparent py-3 px-6 md:static md:max-w-[250px]" +
-    " overflow-y-scroll sidebar";
+    " overflow-y-scroll sidebar z-10";
 
   if (toggleMenu) {
     sidebarStyle += " bg-black top-0 left-0 fixed rounded-r-xl slideIn";

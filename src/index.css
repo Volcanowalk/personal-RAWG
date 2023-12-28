@@ -41,7 +41,7 @@ aside::-webkit-scrollbar {
 
 .slideIn {
   animation-name: slide-in;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwwards;
   animation-timing-function: ease-in;
 }
